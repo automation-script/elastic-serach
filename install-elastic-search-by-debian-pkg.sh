@@ -1,8 +1,13 @@
 #/bin/bash -x
 
 DIR_PATH="/home/ubuntu"
+JAVA_VERSION=$(java -version 2>&1 | grep 'java version' | grep -o 1.8)
+
 sudo apt-get update
-sudo apt-get install openjdk-8-jre-headless
+if [[ !$JAVA_VERSION = "1.8" ]] 
+then
+	sudo apt-get install openjdk-8-jre-headless
+fi
 mkdir -p $DIR_PATH/elasticsearch
 cd !$
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.deb
