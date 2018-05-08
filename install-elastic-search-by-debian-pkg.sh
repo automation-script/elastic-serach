@@ -4,9 +4,9 @@ DIR_PATH="/home/ubuntu"
 JAVA_VERSION=$(java -version 2>&1 | grep 'java version' | grep -o 1.8)
 
 sudo apt-get update
-if [[ !$JAVA_VERSION = "1.8" ]] 
+if [[ -z $JAVA_VERSION  ]] 
 then
-	sudo apt-get install openjdk-8-jre-headless
+	sudo apt-get install openjdk-8-jre-headless -y
 fi
 mkdir -p $DIR_PATH/elasticsearch
 cd !$
